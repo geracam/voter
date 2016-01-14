@@ -61,6 +61,11 @@ class CandidatesController < ApplicationController
     end
   end
 
+  def get_votes
+    @votes = Candidate.get_votes(params[:id])
+    render json: @votes.to_json
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_candidate
@@ -69,6 +74,6 @@ class CandidatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def candidate_params
-      params.require(:candidate).permit(:name)
+      params.require(:candidate).permit(:name, :tally)
     end
 end

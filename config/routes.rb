@@ -55,9 +55,11 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  Rails.application.routes.draw do
-    scope '/api' do
-      resources :candidates, except: [:new, :edit]
+  scope '/api' do
+    resources :candidates, except: [:new, :edit] do
+      member do
+        get 'votes' => 'candidates#get_votes'
+      end
     end
   end
 end

@@ -1,4 +1,8 @@
 div.container
-  h1 Candidates
+  div(class="col-md-12")
+    i Hello
   ul(ng-repeat="candidate in candidates")
-    li {{ candidate.name }}
+    li
+      {{ candidate.name }}
+      button.btn.btn-sm(type="submit" ng-click="vote(candidate.id)") Vote
+      button.btn.btn-sm(ng-click="show_votes(candidate.id)") Show Votes

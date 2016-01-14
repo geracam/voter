@@ -14,6 +14,10 @@ angular.module 'voter'
 
     $urlRouterProvider.otherwise '/'
 
-  .factory "Candidate", (RailsResource) ->
+  .factory "Candidate", (RailsResource, $http) ->
     class Candidate extends RailsResource
       @configure url: "/api/candidates", name: "candidate"
+
+      Candidate.show_votes = (id) ->
+        $http.get("/api/candidates/" + id + "/votes").success (votes) ->
+          votes

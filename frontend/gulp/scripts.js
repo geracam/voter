@@ -19,7 +19,7 @@ gulp.task('scripts', function() {
 });
 
 function buildScripts() {
-  return gulp.src(path.join(conf.paths.src, '/app/**/*.coffee'))
+  return gulp.src(path.join(conf.paths.src, '/app/**/**/*.coffee'))
     .pipe($.sourcemaps.init())
     .pipe($.coffeelint())
     .pipe($.coffeelint.reporter())
